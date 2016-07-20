@@ -33,12 +33,14 @@
 			<tr>
 				<th>Url</th>
 				<th>Name</th>
-				<th>Views</th>
+				<th>Anonymous Views</th>
+				<th>User Views</th>
 			</tr>
 			<tr ng-repeat="location in adminController.locations">
 				<td>{{adminController.url}}/{{location.locationId}}</td>
 				<td>{{location.locationName}}</td>
 				<td>{{location.locationViews}}</td>
+				<td>{{location.locationUserViews}}</td>
 			</tr>
 		</table>
 	</div>

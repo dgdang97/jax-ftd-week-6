@@ -20,4 +20,5 @@ angular.module('app').controller('LoginUserController', ['LoginUserService', '$l
 			}
 		})
 	}
+	
 } ])

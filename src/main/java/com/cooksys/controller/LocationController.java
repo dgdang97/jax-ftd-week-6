@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cooksys.model.Location;
+import com.cooksys.model.LocationLogin;
 import com.cooksys.model.Response;
 import com.cooksys.service.LocationService;
 
@@ -24,10 +25,15 @@ public class LocationController {
 	}
 
 	@RequestMapping(value = "viewLocation", method = RequestMethod.POST)
-	public String viewLocation(@RequestBody Location location) {
-		return locationService.viewLocation(location);
+	public Location viewLocation(@RequestBody Long locationId) {
+		return locationService.viewLocation(locationId);
 	}
 
+	@RequestMapping(value = "login", method = RequestMethod.POST)
+	public Response login(@RequestBody LocationLogin data) {
+		return locationService.login(data);
+	}
+	
 	@RequestMapping(value = "allLocations", method = RequestMethod.GET)
 	public List<Location> getLocations() {
 		return locationService.getLocations();

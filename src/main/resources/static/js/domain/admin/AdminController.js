@@ -6,10 +6,13 @@ controller('AdminController', ['AdminService', '$location', 'allLocations', func
 //	}
 //	
 	var ctrl = this
-	ctrl.url = $location.absUrl()
+	ctrl.url = "/login"
 	
 	ctrl.locations = allLocations.data
 	console.dir(ctrl.urls)
+	
+	ctrl.selectedView = 'Anonymous Views'
+	ctrl.views = ['Anonymous Views', 'User Views']
 	
 	ctrl.newLocation = function() {
 		if (ctrl.name != null)

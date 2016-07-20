@@ -21,8 +21,8 @@ public class Location {
 	@Column(name="location_views")
 	private Long locationViews;
 	
-	@Column(name="location_conversions")
-	private Long locationConversions;
+	@Column(name="location_user_views")
+	private Long locationUserViews;
 	
 	@Column(name="location_details")
 	private String locationDetails;
@@ -31,12 +31,12 @@ public class Location {
 		super();
 	}
 
-	public Location(Long locationId, String locationName, Long locationViews, Long locationConversions, String locationDetails) {
+	public Location(Long locationId, String locationName, Long locationViews, Long locationUserViews, String locationDetails) {
 		super();
 		this.locationId = locationId;
 		this.locationName = locationName;
 		this.locationViews = locationViews;
-		this.locationConversions = locationConversions;
+		this.locationUserViews = locationUserViews;
 		this.locationDetails = locationDetails;
 	}
 
@@ -64,12 +64,12 @@ public class Location {
 		this.locationViews = locationViews;
 	}
 
-	public Long getLocationConversions() {
-		return locationConversions;
+	public Long getLocationUserViews() {
+		return locationUserViews;
 	}
 
-	public void setLocationConversions(Long locationConversions) {
-		this.locationConversions = locationConversions;
+	public void setLocationUserViews(Long locationUserViews) {
+		this.locationUserViews = locationUserViews;
 	}
 
 	public String getLocationDetails() {

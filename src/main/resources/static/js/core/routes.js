@@ -11,6 +11,13 @@ angular
 			controllerAs: 'homeController'
 				
 		}).
+		when('/login/:id', {
+			
+			templateUrl: loginRoute + 'user/userTemplate.html',
+			controller: 'UserController',
+			controllerAs: 'userController'
+
+		}).
 		when('/login', {
 			
 			templateUrl: loginRoute + 'login/loginUserTemplate.html',

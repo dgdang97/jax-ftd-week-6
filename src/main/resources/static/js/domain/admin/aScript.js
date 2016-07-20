@@ -15,3 +15,7 @@ function hideViews() {
 	document.getElementById('newUrl').style.display = "none"
 	document.getElementById('viewUrl').style.display = "none"
 }
+
+function showList() {
+    document.getElementById("dropDown").style.display = "inline-block"
+}

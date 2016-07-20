@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
 <body>
-Welcome back, User!
+	<h1>{{userController.location.locationName}}</h1>
+	<h3>{{userController.location.locationDetails}}</h3>
+	{{userController.message}}
+	<br>
+	<br>
+	<form>
+		Username<br> <input name="username"
+			ng-model="userController.username"></input> <br>
+		<br>Password<br> <input name="password" type="password"
+			ng-model="userController.password"></input> <br>
+		<br>
+		<button type="submit" ng-click="userController.login()">Login</button>
+	</form>
 </body>
-</html>
