@@ -16,6 +16,12 @@ function hideViews() {
 	document.getElementById('viewUrl').style.display = "none"
 }
 
-function showList() {
-    document.getElementById("dropDown").style.display = "inline-block"
+function viewDrop() {
+	document.getElementById('dropMenu').style.display = "block"
 }
+
+//window.onclick = function(event) {
+//	if (!event.target.matches('dropView')) {
+//		document.getElementById('dropMenu').style.display = "none"
+//	}
+//}

@@ -27,17 +27,21 @@ public class Location {
 	@Column(name="location_details")
 	private String locationDetails;
 	
+	@Column(name="location_conversions")
+	private Long locationConversions;
+	
 	public Location() {
 		super();
 	}
 
-	public Location(Long locationId, String locationName, Long locationViews, Long locationUserViews, String locationDetails) {
+	public Location(Long locationId, String locationName, Long locationViews, Long locationUserViews, String locationDetails, Long locationConversions) {
 		super();
 		this.locationId = locationId;
 		this.locationName = locationName;
 		this.locationViews = locationViews;
 		this.locationUserViews = locationUserViews;
 		this.locationDetails = locationDetails;
+		this.locationConversions = locationConversions;
 	}
 
 	public Long getLocationId() {
@@ -78,6 +82,14 @@ public class Location {
 
 	public void setLocationDetails(String locationDetails) {
 		this.locationDetails = locationDetails;
+	}
+
+	public Long getLocationConversions() {
+		return locationConversions;
+	}
+
+	public void setLocationConversions(Long locationConversions) {
+		this.locationConversions = locationConversions;
 	}
 
 }

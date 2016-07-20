@@ -9,7 +9,6 @@ controller('AdminController', ['AdminService', '$location', 'allLocations', func
 	ctrl.url = "/login"
 	
 	ctrl.locations = allLocations.data
-	console.dir(ctrl.urls)
 	
 	ctrl.newLocation = function() {
 		if (ctrl.name != null)

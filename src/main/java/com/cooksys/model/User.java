@@ -22,15 +22,19 @@ public class User {
 	@JoinColumn(name="role_id")
 	private Role role;
 
+	@Column(name="location_id")
+	private Long locationId;
+	
 	public User() {
 		super();
 	}
 
-	public User(String username, String password, Role role) {
+	public User(String username, String password, Role role, Long locationId) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.role = role;
+		this.locationId = locationId;
 	}
 
 	public String getUsername() {
@@ -55,5 +59,13 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public Long getLocationId() {
+		return locationId;
+	}
+
+	public void setLocationId(Long locationId) {
+		this.locationId = locationId;
 	}
 }

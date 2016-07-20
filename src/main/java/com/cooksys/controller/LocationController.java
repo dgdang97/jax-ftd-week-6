@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.cooksys.model.Location;
 import com.cooksys.model.LocationLogin;
 import com.cooksys.model.Response;
+import com.cooksys.model.User;
 import com.cooksys.service.LocationService;
 
 @RestController
@@ -23,7 +24,7 @@ public class LocationController {
 	public Response newLocation(@RequestBody Location location) {
 		return locationService.newLocation(location);
 	}
-
+	
 	@RequestMapping(value = "viewLocation", method = RequestMethod.POST)
 	public Location viewLocation(@RequestBody Long locationId) {
 		return locationService.viewLocation(locationId);
@@ -32,6 +33,11 @@ public class LocationController {
 	@RequestMapping(value = "login", method = RequestMethod.POST)
 	public Response login(@RequestBody LocationLogin data) {
 		return locationService.login(data);
+	}
+	
+	@RequestMapping(value = "newUser", method = RequestMethod.POST)
+	public Response newLocation(@RequestBody User user) {
+		return locationService.newUser(user);
 	}
 	
 	@RequestMapping(value = "allLocations", method = RequestMethod.GET)

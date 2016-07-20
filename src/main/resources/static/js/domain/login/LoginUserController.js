@@ -1,4 +1,6 @@
-angular.module('app').controller('LoginUserController', ['LoginUserService', '$location', function(LoginUserService, $location) {
+angular.module('app').controller('LoginUserController', ['LoginUserService', 'UserService', '$location', function(LoginUserService, UserService, $location) {
+	
+	UserService.viewLocation(0)
 	
 	var ctrl = this
 	
@@ -11,8 +13,17 @@ angular.module('app').controller('LoginUserController', ['LoginUserService', '$l
 			ctrl.message = result.data
 			console.dir(ctrl.message)
 			if (ctrl.message.response === "user") {
-				$location.path("/user")
+				var data = {
+						"user" : login,
+						"locationId" : 0
+					}
+					UserService.login(data)
 			} else if (ctrl.message.response === "admin") {
+				var data = {
+						"user" : login,
+						"locationId" : 0
+					}
+					UserService.login(data)
 				loggedInAdmin = true
 				$location.path("/admin")
 			} else {
