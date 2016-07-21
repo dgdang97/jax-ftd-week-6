@@ -9,7 +9,18 @@ controller('AdminController', ['AdminService', '$location', 'allLocations', func
 	ctrl.url = "/login"
 	
 	ctrl.locations = allLocations.data
-	
+	ctrl.views = ["Anonymous", "User", "Total"]
+	ctrl.selectedView = "Total"
+	ctrl.index = allLocations.data.length
+		
+	ctrl.selectView = function(view) {
+		for (var i = 0; i < ctrl.index; i++) {
+			document.getElementById(ctrl.selectedView + i).style.display = "none";
+			document.getElementById(view + i).style.display = "table-cell";
+		}
+		ctrl.selectedView = view;
+	}
+		
 	ctrl.newLocation = function() {
 		if (ctrl.name != null)
 		var location = {
