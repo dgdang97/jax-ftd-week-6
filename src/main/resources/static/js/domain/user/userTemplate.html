@@ -1,16 +1,17 @@
 <body>
-	<h1>{{userController.location.locationName}}</h1>
-	<h3>{{userController.location.locationDetails}}</h3>
-	{{userController.message}}
-	<br>
-	<br>
-	<form>
-		Username<br> <input name="username"
-			ng-model="userController.username"></input> <br>
-		<br>Password<br> <input name="password" type="password"
-			ng-model="userController.password"></input> <br>
-		<br>
-		<button type="submit" ng-click="userController.login()">Login</button>
-		<button type="submit" ng-click="userController.register()">Register</button>
-	</form>
+	<div class="jumbotron">
+		<h1 class="row">{{userController.location.locationName}}</h1>
+		<h3 class="row">{{userController.location.locationDetails}}</h3>
+	</div>
+	<div class="container">
+		{{userController.message}} <br> <br>
+		<form>
+			Username<br> <input name="username"
+				ng-model="userController.username"></input> <br> <br>Password<br>
+			<input name="password" type="password"
+				ng-model="userController.password"></input> <br> <br>
+			<button type="submit" ng-click="userController.login()">Login</button>
+			<button type="submit" ng-click="userController.register()">Register</button>
+		</form>
+	</div>
 </body>

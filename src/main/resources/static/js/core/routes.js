@@ -18,13 +18,6 @@ angular
 			controllerAs: 'userController'
 
 		}).
-		when('/login', {
-			
-			templateUrl: loginRoute + 'login/loginUserTemplate.html',
-			controller: 'LoginUserController',
-			controllerAs: 'loginUserController'
-				
-		}).
 		when('/admin', {
 			
 			templateUrl: loginRoute + 'admin/adminTemplate.html',
@@ -33,8 +26,11 @@ angular
 			 resolve: {
 				 allLocations: function(AdminService){
 					 return AdminService.getAllLocations()
+					 },
+					 allViewTimes: function (AdminService) {
+					 return AdminService.getViewTimes()
+				 }
 					 }
-				  }
 				
 		}).
 		when('/user', {
@@ -44,5 +40,5 @@ angular
 			controllerAs: 'userController'
 				
 		}).
-		otherwise('/login');
+		otherwise('/login/0');
 }])

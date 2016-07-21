@@ -12,6 +12,7 @@ import com.cooksys.model.Location;
 import com.cooksys.model.LocationLogin;
 import com.cooksys.model.Response;
 import com.cooksys.model.User;
+import com.cooksys.model.ViewTime;
 import com.cooksys.service.LocationService;
 
 @RestController
@@ -45,4 +46,8 @@ public class LocationController {
 		return locationService.getLocations();
 	}
 
+	@RequestMapping("allViewTimes")
+	public List<ViewTime> allViewTimes() {
+		return locationService.getViewTimes();
+	}
 }
