@@ -3,15 +3,15 @@ angular
 .controller('UserController', ['UserService', '$routeParams', '$location', function(UserService, $routeParams, $location) {
 	var ctrl = this
 	ctrl.message = 'Welcome! Please login!'
-
-	UserService.viewLocation($routeParams.id).then(function(result) {
-		if (result.data.locationId != null) {
-		ctrl.location = result.data
-		} else {
-			alert("Page not found. Returning to Homepage.")
-			$location.path("/home")
-		}
-	})
+//
+//	UserService.viewLocation($routeParams.id).then(function(result) {
+//		if (result.data.locationId != null) {
+//		ctrl.location = result.data
+//		} else {
+//			alert("Page not found. Returning to Homepage.")
+//			$location.path("/home")
+//		}
+//	})
 	
 	ctrl.login = function() {
 		if (loggedIn === false) {

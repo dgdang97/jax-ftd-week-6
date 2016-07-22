@@ -8,7 +8,8 @@ controller('AdminController', ['AdminService', '$location', 'allLocations', 'all
 	var ctrl = this
 	ctrl.url = "/login"
 	
-	var date = new Date();
+	var date = new Date()
+	var currentTable = "Total"
 	
 	ctrl.currentDate = date.toString()
 		
@@ -38,7 +39,7 @@ controller('AdminController', ['AdminService', '$location', 'allLocations', 'all
 	ctrl.data = ctrl.yearlyData	
 		
 	var ctx = document.getElementById("Chart");
-	var myChart = new Chart(ctx, {
+	var viewChart = new Chart(ctx, {
 	    type: 'bar',
 	    data: {
 	        labels: ctrl.labels,
@@ -60,13 +61,14 @@ controller('AdminController', ['AdminService', '$location', 'allLocations', 'all
 	
 	ctrl.selectView = function(view) {
 		for (var i = 0; i < ctrl.index; i++) {
-			document.getElementById(ctrl.selectedView + i).style.display = "none";
+			document.getElementById(currentTable + i).style.display = "none";
 			document.getElementById(view + i).style.display = "table-cell";
 		}
-		ctrl.selectedView = view;
+		ctrl.selectedView = view
+		currentTable = view
 		
-		document.getElementById("Chart").style.display = "none"
 		document.getElementById("Table").style.display = "block"
+		document.getElementById("Chart").style.display = "none"
 	}
 		
 	ctrl.newLocation = function() {
@@ -82,16 +84,19 @@ controller('AdminController', ['AdminService', '$location', 'allLocations', 'all
 	}
 
 	ctrl.showChart = function(chart) {
-		if (chart === 'year') {
-			ctrl.viewLabel = "Yearly Views"
-			ctrl.data = ctrl.yearlyData
-		} else if ( chart === 'month') {
-			ctrl.viewLabel = "Monthly Views"
-			ctrl.data = ctrl.monthlyData
-		} else if (chart === 'week') {
-			ctrl.viewLabel = "Weekly Views"
-			ctrl.data = ctrl.weeklyData
+		if (chart === 'Year') {
+			viewChart.data.datasets[0].label = "Yearly Views"
+			viewChart.data.datasets[0].data = ctrl.yearlyData
+		} else if ( chart === 'Month') {
+			viewChart.data.datasets[0].label = "Monthly Views"
+			viewChart.data.datasets[0].data = ctrl.monthlyData
+		} else if (chart === 'Week') {
+			viewChart.data.datasets[0].label = "Weekly Views"
+			viewChart.data.datasets[0].data = ctrl.weeklyData
 		}
+		
+		ctrl.selectedView = chart + "ly Chart"
+		viewChart.update()
 		
 		document.getElementById("Table").style.display = "none"
 		document.getElementById("Chart").style.display = "block"
