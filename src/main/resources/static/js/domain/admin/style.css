@@ -2,6 +2,37 @@ div {
 	text-align: center;
 }
 
+body {
+	background: #191919;
+	color: #e5e5e5;
+}
+.jumbotron {
+	background-color: #A9A9A9;
+	color: #000000;
+}
+
+body > ng-view > div > div > div.list-group.content-pane > div.panel-group > div,
+body > ng-view > div.container.ng-binding.ng-scope > form > input,
+body > ng-view > div.container.ng-binding.ng-scope > form > button,
+#newUrl > form > input,
+#newUrl > form > button {
+	background-color: #000000;
+}
+
+#tabs > li> a {
+	color: #ADD8E6;
+}
+
+body > ng-view > div > div > div.list-group.content-pane > div > div > div.panel-heading.list-group-item {
+	background-color: #A9A9A9;
+}
+
+#skills > div.panel-body > div.panel-heading,
+#education > div > div.panel-heading { 
+	background-color: #A9A9A9;
+	color: #000000;
+}
+
 .viewFormat {
 	text-align: left;
 	font-size: 40px;
@@ -24,10 +55,7 @@ div {
 	background-color: #7EC0EE !important;
 }
 
-li.active a{
-	background-color:#eeeeee !important;
-}
-
+li.active a,
 li.active a:hover{
 	background-color:#eeeeee !important;
-}
+}]

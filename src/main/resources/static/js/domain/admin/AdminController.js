@@ -5,6 +5,8 @@ controller('AdminController', ['AdminService', '$location', 'allLocations', 'all
 		$location.path('/home')
 	}
 	
+	Chart.defaults.global.defaultFontColor = "#ffffff";
+	
 	var ctrl = this
 	ctrl.url = "/login"
 	
