@@ -1,18 +1,18 @@
 angular.
 module('app').
 controller('AdminController', ['AdminService', '$location', 'allLocations', 'allViewTimes', function(AdminService, $location, allLocations, allViewTimes) {
-//	if (loggedInAdmin === false) {
-//		$location.path('/home')
-//	}
-//	
+	if (loggedInAdmin === false) {
+		$location.path('/home')
+	}
+	
 	var ctrl = this
 	ctrl.url = "/login"
 	
 	var date = new Date()
 	var currentTable = "Total"
-	
-	ctrl.currentDate = date.toString()
 		
+	ctrl.lastUpdated = date.toString()
+	
 	ctrl.locations = allLocations.data
 	ctrl.viewTimes = allViewTimes.data
 	
@@ -107,4 +107,14 @@ controller('AdminController', ['AdminService', '$location', 'allLocations', 'all
 		document.getElementById("Chart").style.display = "block"
 	}
 	
+	var interval = 0
+	
+	function timeUpdate() {
+		var currentDate = new Date()
+		document.getElementById("currentTime").innerHTML = "Current Time: " + currentDate
+	}
+	
+	var update = setInterval(function() {
+		timeUpdate()
+	}, 1000)
 }]);

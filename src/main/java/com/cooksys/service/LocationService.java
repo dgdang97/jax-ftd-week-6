@@ -139,49 +139,35 @@ public class LocationService {
 
 	public List<ViewTime> getViewTimes() {
 		List<ViewTime> viewTimes = new ArrayList<>();
-		List<View> views = vr.findAll();
-		List<View> viewByYear = new ArrayList<>();
-		List<View> viewByMonth = new ArrayList<>();
-		List<View> viewByWeek = new ArrayList<>();
-
 		Calendar c = Calendar.getInstance();
-
-		for (View v : views) {
-			if (v.getViewYear().equals(c.get(Calendar.YEAR))) {
-				viewByYear.add(v);
-				
-				if (v.getViewMonth().equals(c.get(Calendar.MONTH) + 1)) {
-					viewByMonth.add(v);
-					
-					if (v.getViewDay() >= c.get(Calendar.DAY_OF_MONTH) - 7) {
-						viewByWeek.add(v);
-					}
-				}
-			}
-
-		}
-
+		
 		Long locations = (long) getLocations().size();
 		for (Long i = (long) 0; i < locations; i++) {
-			Long yearlyViewsById = viewTimeById(i, viewByYear);
-			Long monthlyViewsById = viewTimeById(i, viewByMonth);
-			Long weeklyViewsById = viewTimeById(i, viewByWeek);
+			List<View> views = vr.findByLocationId(i);
+			Long yearlyViews = (long) 0;
+			Long monthlyViews = (long) 0;
+			Long weeklyViews= (long) 0;
 			
-			ViewTime view = new ViewTime(i, yearlyViewsById, monthlyViewsById, weeklyViewsById);
+			for (View v : views) {
+				if (v.getViewYear().equals(c.get(Calendar.YEAR))) {
+					yearlyViews++;
+					
+					// Adds one to month Calendar.Month to match database
+					if (v.getViewMonth().equals(c.get(Calendar.MONTH) + 1)) {
+						monthlyViews++;
+						
+						if (v.getViewDay() >= c.get(Calendar.DAY_OF_MONTH) - 7) {
+							weeklyViews++;
+						}
+					}
+				}
+
+			}
+			ViewTime view = new ViewTime(i, yearlyViews, monthlyViews, weeklyViews);
 			viewTimes.add(view);
 		}
 
 		return viewTimes;
-	}
-
-	private Long viewTimeById(Long l, List<View> list) {
-		Long views = (long) 0;
-		for (View v : list) {
-			if (v.getLocationId().equals(l)) {
-				views = views + 1;
-			}
-		}
-		return views;
 	}
 
 }
