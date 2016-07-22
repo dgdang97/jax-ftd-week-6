@@ -13,9 +13,9 @@ angular
 		}).
 		when('/login/:id', {
 			
-			templateUrl: loginRoute + 'user/userTemplate.html',
-			controller: 'UserController',
-			controllerAs: 'userController'
+			templateUrl: loginRoute + 'login/loginTemplate.html',
+			controller: 'LoginController',
+			controllerAs: 'loginController'
 
 		}).
 		when('/admin', {

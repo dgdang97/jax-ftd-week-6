@@ -18,3 +18,16 @@ div {
 .viewRow {
 	border-style: outset;
 }
+
+.nav-tabs > li > a:hover {
+	transition: .5s;
+	background-color: #7EC0EE !important;
+}
+
+li.active a{
+	background-color:#eeeeee !important;
+}
+
+li.active a:hover{
+	background-color:#eeeeee !important;
+}

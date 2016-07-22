@@ -1,0 +1,17 @@
+<body>
+	<div class="jumbotron">
+		<h1 class="row">{{loginController.location.locationName}}</h1>
+		<h3 class="row">{{loginController.location.locationDetails}}</h3>
+	</div>
+	<div class="container">
+		{{loginController.message}} <br> <br>
+		<form>
+			Username<br> <input name="username"
+				ng-model="loginController.username"></input> <br> <br>Password<br>
+			<input name="password" type="password"
+				ng-model="loginController.password"></input> <br> <br>
+			<button type="submit" ng-click="loginController.login()">Login</button>
+			<button type="submit" ng-click="loginController.register()">Register</button>
+		</form>
+	</div>
+</body>

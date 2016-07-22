@@ -25,12 +25,14 @@ controller('AdminController', ['AdminService', '$location', 'allLocations', 'all
 	ctrl.yearlyData = [ctrl.viewTimes[0].yearlyView]
 	ctrl.monthlyData = [ctrl.viewTimes[0].monthlyView]
 	ctrl.weeklyData = [ctrl.viewTimes[0].weeklyView]
-
+	ctrl.conversionData = [((ctrl.locations[0].locationConversions / ctrl.locations[0].locationViews) * 100).toFixed(2)]
+	
 	for (var i = 1; i < ctrl.index; i++) {
 		ctrl.labels.push(ctrl.locations[i].locationName)
 		ctrl.yearlyData.push(ctrl.viewTimes[i].yearlyView)
 		ctrl.monthlyData.push(ctrl.viewTimes[i].monthlyView)
 		ctrl.weeklyData.push(ctrl.viewTimes[i].weeklyView)
+		ctrl.conversionData.push(((ctrl.locations[i].locationConversions / ctrl.locations[i].locationViews) * 100).toFixed(2))
 	}
 	
 
@@ -84,18 +86,21 @@ controller('AdminController', ['AdminService', '$location', 'allLocations', 'all
 	}
 
 	ctrl.showChart = function(chart) {
-		if (chart === 'Year') {
+		if (chart === 'Yearly') {
 			viewChart.data.datasets[0].label = "Yearly Views"
 			viewChart.data.datasets[0].data = ctrl.yearlyData
-		} else if ( chart === 'Month') {
+		} else if ( chart === 'Monthly') {
 			viewChart.data.datasets[0].label = "Monthly Views"
 			viewChart.data.datasets[0].data = ctrl.monthlyData
-		} else if (chart === 'Week') {
+		} else if (chart === 'Weekly') {
 			viewChart.data.datasets[0].label = "Weekly Views"
 			viewChart.data.datasets[0].data = ctrl.weeklyData
+		} else if (chart === 'Conversion') {
+			viewChart.data.datasets[0].label = "Converted Users"
+			viewChart.data.datasets[0].data = ctrl.conversionData
 		}
 		
-		ctrl.selectedView = chart + "ly Chart"
+		ctrl.selectedView = chart + " Chart"
 		viewChart.update()
 		
 		document.getElementById("Table").style.display = "none"
